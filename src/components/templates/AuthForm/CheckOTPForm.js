@@ -49,7 +49,7 @@ function CheckOTPForm({ mobile, code }) {
           htmlFor="mobile"
           className="w-full  text-center h-[25px] leading-6 font-[300] text-base mb-[10px]"
         >
-          {`کد تایید به شماره ${convertNum("09224526847")} ارسال شد`}
+          {`کد تایید به شماره ${convertNum(mobile)} ارسال شد`}
         </label>
         <div
           style={{ direction: "ltr" }}
