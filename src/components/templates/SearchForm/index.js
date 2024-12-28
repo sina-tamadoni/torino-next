@@ -103,7 +103,9 @@ function SearchForm({ pathname }) {
             defaultValue="none"
             className="absolute w-full h-full opacity-0 top-0 right-0 cursor-pointer px-2 focus:outline-none focus:ring-2 focus:ring-custom-green focus:border-custom-green"
           >
-            <option value="none">مقصد</option>
+            <option value="none" disabled>
+              مقصد
+            </option>
             <option value="1">سنندج</option>
             <option value="2">مادرید</option>
             <option value="3">سلیمانیه</option>

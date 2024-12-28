@@ -60,10 +60,10 @@ const Card = ({ tours }) => {
 
             <div className="flex items-center gap-12 divide-x p-4 border-t">
               <div className="flex gap-7 items-center text-center w-[40%] lg:w-[30%]">
-                <h4 className="text-[#00000080] text-[10px] md:text-sm leading-[15.5px] md:leading-[21.7px]">
+                <h4 className="text-[#00000080] min-w-[55px] text-[10px] md:text-sm leading-[15.5px] md:leading-[21.7px]">
                   شماره تور
                 </h4>
-                <p className="text-[#282828]  truncate font-semibold text-xs md:text-sm leading-[18.75px] md:leading-[21.88px]">
+                <p className="text-[#282828] truncate font-semibold text-xs md:text-sm leading-[18.75px] md:leading-[21.88px]">
                   {tour.id}
                 </p>
               </div>
