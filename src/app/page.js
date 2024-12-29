@@ -76,13 +76,13 @@ export default async function Home({ searchParams }) {
                 </div>
               </div>
               <div className="flex justify-between items-center border-t border-t-1 border-[#0000001F] p-3">
-                <button className="flex justify-center items-center bg-custom-green p-3 rounded-[4px] text-[15px] text-white w-[99px] h-[30px] md:h-[33px] font-[400] leading-[23.25px]">
                 <Link
                   href={`tours/${tour.id}`}
                 >
+                <button className="flex justify-center items-center bg-custom-green p-3 rounded-[4px] text-[15px] text-white w-[99px] h-[30px] md:h-[33px] font-[400] leading-[23.25px]">
                   رزرو
-                </Link>
                 </button>
+                </Link>
 
                 <div>
                   <span className="text-base font-[400] leading-[25px] text-[#009ECA] px-1">{`${formatPrice(
