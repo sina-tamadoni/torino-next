@@ -1,5 +1,4 @@
 import AddToCartButton from "@/components/partials/AddToCartButton";
-import ModalContainer from "@/components/partials/ModalContainer";
 import calculateDaysDifference from "@/core/utils/calculateDaysDifference";
 import {
   converDateToShamsi,
@@ -22,14 +21,11 @@ export default async function TourDetails({ params }) {
   const selectedTour = await fetch(`http://localhost:6500/tour/${tour}`).then(
     (res) => res.json()
   );
-  // console.log(selectedTour);
 
   return (
     <div className="bg-[#f3f3f3] min-h-screen px-0 md:px-[20px] lg:px-[126px] md:py-9">
       <div className="bg-white md:rounded-lg shadow-lg p-6 w-full mt-1 ">
-        {/* ردیف اول */}
         <div className="flex flex-col md:flex-row gap-6">
-          {/* تصویر */}
           <div className="flex-shrink-0 flex justify-center">
             <Image
               src={selectedTour.image}
@@ -41,15 +37,12 @@ export default async function TourDetails({ params }) {
             />
           </div>
 
-          {/* اطلاعات تور */}
           <div className="flex-1 flex flex-col justify-between">
-            {/* ردیف اول: نام تور */}
             <div className="flex justify-between items-center md:items-start md:flex-col">
               <h1 className="text-2xl md:text-[32px] font-semibold md:font-semibold leading-[37.2px] md:leading-[49.6px]">
                 {selectedTour.title}
               </h1>
 
-              {/* ردیف دوم: تعداد روزها */}
               <p className="font-normal text-[15px] leading-[23.44px] text-[#282828] md:mt-3">
                 {`${convertNum(
                   calculateDaysDifference(
@@ -60,7 +53,6 @@ export default async function TourDetails({ params }) {
               </p>
             </div>
 
-            {/* ردیف سوم: سه قسمت با آیکون و عنوان */}
             <div className="flex justify-between md:justify-start md:gap-10 mt-5 md:mt-4">
               <div className="flex items-center gap-2">
                 <Image
@@ -100,7 +92,6 @@ export default async function TourDetails({ params }) {
               </div>
             </div>
 
-            {/* ردیف چهارم: قیمت و دکمه */}
             <div className="flex justify-between items-baseline mt-4 md:mt-2">
               <p className="">
                 <span className="text-[#009ECA] font-[500] text-2xl lg:text-[28px]  leading-[37.5px] lg:leading-[43.75px]">
@@ -115,18 +106,12 @@ export default async function TourDetails({ params }) {
                 price={selectedTour.price}
                 title={selectedTour.title}
               />
-
-              {/* <button className="px-4 py-2 w-[154px] h-[42px] lg:w-[204px] lg:h-[56px] mt-4 bg-custom-green text-white font-normal text-xl lg:text-[2xl] flex justify-center items-center rounded-[10px] shadow hover:bg-green-700 outline-none">
-                رزرو و خرید
-              </button> */}
             </div>
           </div>
         </div>
 
-        {/* ردیف دوم */}
         <div className="mt-14 grid grid-cols-3 md:grid-cols-6 divide-x divide-gray-200 gap-4">
           <div className="hidden md:flex flex-col items-center text-center gap-2">
-            {/* ردیف اول: آیکون و عنوان */}
             <div className="flex items-center gap-2">
               <Image
                 src="/assets/icons/routing-2.svg"
@@ -138,13 +123,11 @@ export default async function TourDetails({ params }) {
                 مبدا
               </span>
             </div>
-            {/* ردیف دوم: توضیحات */}
             <p className="text-sm lg:text-base font-[500] leading-[21.88px] lg:leading-[25px] text-[#282828]">
               {selectedTour.origin.name}
             </p>
           </div>
           <div className="hidden md:flex flex-col items-center text-center gap-2">
-            {/* ردیف اول: آیکون و عنوان */}
             <div className="flex items-center gap-2">
               <Image
                 src="/assets/icons/calendar-1.svg"
@@ -156,7 +139,6 @@ export default async function TourDetails({ params }) {
                 تاریخ رفت
               </span>
             </div>
-            {/* ردیف دوم: توضیحات */}
             <p className="text-sm lg:text-base font-[500] leading-[21.88px] lg:leading-[25px] text-[#282828]">
               {convertNum(
                 converDateToShamsi(formatISODate(selectedTour.startDate))
@@ -164,7 +146,6 @@ export default async function TourDetails({ params }) {
             </p>
           </div>
           <div className="hidden md:flex flex-col items-center text-center gap-2">
-            {/* ردیف اول: آیکون و عنوان */}
             <div className="flex items-center gap-2">
               <Image
                 src="/assets/icons/calendar-2.svg"
@@ -176,7 +157,6 @@ export default async function TourDetails({ params }) {
                 تاریخ برگشت
               </span>
             </div>
-            {/* ردیف دوم: توضیحات */}
             <p className="text-sm lg:text-base font-[500] leading-[21.88px] lg:leading-[25px] text-[#282828]">
               {convertNum(
                 converDateToShamsi(formatISODate(selectedTour.endDate))
@@ -184,7 +164,6 @@ export default async function TourDetails({ params }) {
             </p>
           </div>
           <div className="flex flex-col items-center text-center gap-2">
-            {/* ردیف اول: آیکون و عنوان */}
             <div className="flex items-center gap-2">
               <Image
                 src="/assets/icons/bus.svg"
@@ -196,13 +175,11 @@ export default async function TourDetails({ params }) {
                 حمل و نقل
               </span>
             </div>
-            {/* ردیف دوم: توضیحات */}
             <p className="text-sm lg:text-base font-[500] leading-[21.88px] lg:leading-[25px] text-[#282828]">
               {selectedTour.fleetVehicle}
             </p>
           </div>
           <div className="flex flex-col items-center text-center gap-2">
-            {/* ردیف اول: آیکون و عنوان */}
             <div className="flex items-center gap-2">
               <Image
                 src="/assets/icons/profile-2user.svg"
@@ -214,13 +191,11 @@ export default async function TourDetails({ params }) {
                 ظرفیت
               </span>
             </div>
-            {/* ردیف دوم: توضیحات */}
             <p className="text-sm lg:text-base font-[500] leading-[21.88px] lg:leading-[25px] text-[#282828]">
               {convertNum(selectedTour.availableSeats)} نفر
             </p>
           </div>
           <div className="flex flex-col items-center text-center gap-2">
-            {/* ردیف اول: آیکون و عنوان */}
             <div className="flex items-center gap-2">
               <Image
                 src="/assets/icons/security.svg"
@@ -232,7 +207,6 @@ export default async function TourDetails({ params }) {
                 بیمه
               </span>
             </div>
-            {/* ردیف دوم: توضیحات */}
             <p className="text-sm lg:text-base font-[500] leading-[21.88px] lg:leading-[25px] text-[#282828]">
               {selectedTour.insurance ? "دارد" : "ندارد"}
             </p>

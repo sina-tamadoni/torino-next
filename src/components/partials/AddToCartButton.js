@@ -15,6 +15,7 @@ function AddToCartButton({ tourId, price, title }) {
   function submitHandler() {
     mutate(tourId, {
       onSuccess: (data) => {
+        // console.log(data);
         setIsOpen(true);
         setMessage(data.data.message);
       },

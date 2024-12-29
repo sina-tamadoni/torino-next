@@ -2,7 +2,7 @@
 
 import Loader from "@/components/partials/Loader";
 import EmptyCart from "@/components/templates/EmptyCart/page";
-import { cartInfoSchema, personalInfoSchema } from "@/core/schemas";
+import { cartInfoSchema } from "@/core/schemas";
 import { useOrder } from "@/core/services/mutations";
 import { useGetCart } from "@/core/services/queries";
 import calculateDaysDifference from "@/core/utils/calculateDaysDifference";
@@ -10,13 +10,15 @@ import { converDateToShamsi } from "@/core/utils/convertDateToShamsi";
 import { convertNum, formatPrice } from "@/core/utils/convertNumToPersian";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 function Cart() {
   const { data: tour, error, isError, isLoading } = useGetCart();
   const { mutate } = useOrder();
-
+  // console.log({ tour, error, isError });
+  const router = useRouter();
   const {
     handleSubmit,
     register,
@@ -33,6 +35,7 @@ function Cart() {
     mutate(data, {
       onSuccess: (data) => {
         toast.success(data.data.message);
+        window.location.reload();
       },
       onError: (error) => {
         if (error.message === "Invalid token") {
@@ -45,7 +48,7 @@ function Cart() {
   if (isLoading) {
     return <Loader />;
   }
-  if (!tour?.data || isError) {
+  if (tour?.data.length === 0 || !tour?.data) {
     return <EmptyCart />;
   }
   return (
@@ -162,7 +165,7 @@ function Cart() {
           </span>
           <div className="flex items-center gap-1">
             <span className="text-[#009ECA] font-[500] text-[28px] leading-[43.75px]">
-              {formatPrice(tour?.data?.price)}
+              {tour?.data?.price && formatPrice(tour?.data?.price)}
             </span>
             <span className="font-normal text-[14px] leading-[21.88px] ">
               تومان

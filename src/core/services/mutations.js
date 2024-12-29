@@ -32,11 +32,12 @@ const useAddToCart = () => {
 
 const useOrder = () => {
   const queryClient = useQueryClient();
-  const queryKey = ["cart"];
-
   const mutationFn = (data) => api.post("order", data);
-  const onSuccess = () => queryClient.invalidateQueries({ queryKey });
-
+  const onSuccess = () => {
+    queryClient.invalidateQueries(["cart"]);
+    queryClient.invalidateQueries(["userTours"]);
+    queryClient.invalidateQueries(["userTransactions"]);
+  };
   return useMutation({ mutationFn, onSuccess });
 };
 

@@ -6,9 +6,9 @@ import React from "react";
 const Card = ({ tours }) => {
   return (
     <ul className="h-fit flex flex-col gap-3">
-      {tours?.data?.map((tour) => (
+      {tours?.data?.map((tour,index) => (
         <li
-          key={tour.id}
+          key={index}
           className="border border-[#00000033] rounded-lg max-w-4xl w-full bg-white"
         >
           <div className="4">

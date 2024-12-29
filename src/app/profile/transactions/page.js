@@ -1,16 +1,18 @@
 "use client";
+import EmptyTransactions from "@/components/templates/EmptyTransactions/page";
 import { useGetUserTransactions } from "@/core/services/queries";
 import { convertToDateAndHours } from "@/core/utils/convertDateToShamsi";
 import { convertNum, formatPrice } from "@/core/utils/convertNumToPersian";
 
 function Transactions() {
-  const { data: transactions } = useGetUserTransactions();
+  const { data: transactions, error, isError } = useGetUserTransactions();
+  console.log({ transactions, error, isError });
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto">
       <div className="overflow-x-auto shadow-md rounded-[10px]">
-        {transactions?.data.length === 0 ? (
-          <div>تراکنشی یافت نشد</div>
+        {transactions?.data.length === 0 || isError ? (
+          <EmptyTransactions />
         ) : (
           <table className="min-w-full bg-white border border-gray-200">
             <thead>
