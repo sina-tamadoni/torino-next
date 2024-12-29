@@ -11,21 +11,19 @@ function AddToCartButton({ tourId, price, title }) {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
   const { mutate } = useAddToCart();
+  const router = useRouter();
 
   function submitHandler() {
     mutate(tourId, {
       onSuccess: (data) => {
+        console.log(data);
+
         setIsOpen(true);
         setMessage(data.data.message);
       },
       onError: (error) => {
-        if (
-          error.message ===
-          "Cannot read properties of null (reading 'accessToken')"
-        ) {
-          toast.error("برای رزرو تور باید ثبت نام کنید!");
-        }
-        toast.error(error.message);
+        toast.error("وضعیت ثبت نام را چک کنید یا دوباره وارد شوید");
+        router.push("/");
       },
     });
   }
@@ -33,10 +31,7 @@ function AddToCartButton({ tourId, price, title }) {
     <>
       <button
         type="submit"
-        onClick={() => {
-          setIsOpen(true);
-          submitHandler(tourId);
-        }}
+        onClick={submitHandler}
         className="px-4 py-2 w-[154px] h-[42px] lg:w-[204px] lg:h-[56px] mt-4 bg-custom-green text-white font-normal text-xl lg:text-[2xl] flex justify-center items-center rounded-[10px] shadow hover:bg-green-700 outline-none"
       >
         رزرو و خرید
