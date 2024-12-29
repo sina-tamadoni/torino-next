@@ -6,7 +6,6 @@ import { convertNum, formatPrice } from "@/core/utils/convertNumToPersian";
 
 function Transactions() {
   const { data: transactions, error, isError } = useGetUserTransactions();
-  console.log({ transactions, error, isError });
 
   return (
     <div className="container mx-auto">

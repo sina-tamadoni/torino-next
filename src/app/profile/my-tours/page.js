@@ -5,7 +5,6 @@ import { useGetUserTours } from "@/core/services/queries";
 
 function MyTours() {
   const { data: tours, error, isError } = useGetUserTours();
-  console.log({ tours, error, isError });
 
   return (
     <div className="container mx-auto">

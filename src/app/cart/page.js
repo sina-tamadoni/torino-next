@@ -10,15 +10,12 @@ import { converDateToShamsi } from "@/core/utils/convertDateToShamsi";
 import { convertNum, formatPrice } from "@/core/utils/convertNumToPersian";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 function Cart() {
   const { data: tour, error, isError, isLoading } = useGetCart();
   const { mutate } = useOrder();
-  // console.log({ tour, error, isError });
-  const router = useRouter();
   const {
     handleSubmit,
     register,
