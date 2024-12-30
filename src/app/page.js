@@ -78,10 +78,9 @@ export default async function Home({ searchParams }) {
               <div className="flex justify-between items-center border-t border-t-1 border-[#0000001F] p-3">
                 <Link
                   href={`tours/${tour.id}`}
+                  className="flex justify-center items-center bg-custom-green p-3 rounded-[4px] text-[15px] text-white w-[99px] h-[30px] md:h-[33px] font-[400] leading-[23.25px]"
                 >
-                <button className="flex justify-center items-center bg-custom-green p-3 rounded-[4px] text-[15px] text-white w-[99px] h-[30px] md:h-[33px] font-[400] leading-[23.25px]">
                   رزرو
-                </button>
                 </Link>
 
                 <div>
