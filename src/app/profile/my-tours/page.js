@@ -11,7 +11,7 @@ function MyTours() {
       {tours?.data.length === 0 || isError ? (
         <EmptyTours />
       ) : (
-        <div className="min-h-screen w-full overflow-y-auto">
+        <div className="h-[70%] w-full overflow-y-auto">
           <Card tours={tours} />
         </div>
       )}
